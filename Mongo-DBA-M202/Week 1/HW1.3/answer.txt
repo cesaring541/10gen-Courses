@@ -1,0 +1,5 @@
+If running MongoDB 2.4, move your system to another machine with more memory
+
+Add an index for the variable(s) you are using to sort the documents
+
+If you are not already doing so, include a $match earlier in the pipeline that will reduce the number of documents you are sorting
