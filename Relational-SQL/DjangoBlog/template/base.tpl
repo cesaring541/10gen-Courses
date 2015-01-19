@@ -12,6 +12,7 @@
   {% block content %}
   Welcome {{username}}
 
+  {% if user.authenticate %}
   <p>
     <ul>
       <li><a href="/">Goto Blog Home</a></li>
@@ -23,6 +24,18 @@
       </li>
     </ul>
   </p>
+  {% else %}
+  <p>
+    <ul>
+      <li>
+        <a href="/signin">SignIn</a>
+      </li>
+      <li>
+        <a href="/login">Login</a>
+      </li>
+    </ul>
+  </p>
+  {% endif %}
   {%endblock %}
 
   {% block footer %}{% endblock %}
