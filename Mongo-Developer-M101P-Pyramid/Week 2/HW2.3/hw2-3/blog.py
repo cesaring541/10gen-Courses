@@ -76,7 +76,6 @@ def process_login():
     password = bottle.request.forms.get("password")
 
     print "user submitted ", username, "pass ", password
-
     user_record = users.validate_login(username, password)
     if user_record:
         # username is stored in the user collection in the _id key
