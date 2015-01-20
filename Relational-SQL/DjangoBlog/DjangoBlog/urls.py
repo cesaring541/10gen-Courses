@@ -5,6 +5,6 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'DjangoBlog.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^',include("Blog.urls"),name="index"),
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^',include("Blog.urls")),
+    url(r'^admin/', include(admin.site.urls)),
 )

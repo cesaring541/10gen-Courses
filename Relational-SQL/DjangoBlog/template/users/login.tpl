@@ -1,47 +1,20 @@
-<!DOCTYPE html>
+{% extends "base.tpl" %}
 
-<html>
-  <head>
-    <title>Login</title>
-    <style type="text/css">
-      .label {text-align: right}
-      .error {color: red}
-    </style>
+{% block content %}
+    <h1>Login to Rango</h1>
+    {% if error %}
+    <div class="alert alert-danger">
+        {{error}}
+    </div>
+    {% endif%}
+    <form id="login_form" method="post" action="{% url 'login'%}">
+        {% csrf_token %}
 
-  </head>
+        Username: <input type="text" name="username" value="" size="50" />
+        <br />
+        Password: <input type="password" name="password" value="" size="50" />
+        <br />
 
-  <body>
-    <h2>Login</h2>
-    <form method="post">
-      <table>
-        <tr>
-          <td class="label">
-            Username
-          </td>
-          <td>
-            <input type="text" name="username" value="{{username}}">
-          </td>
-          <td class="error">
-          </td>
-        </tr>
-
-        <tr>
-          <td class="label">
-            Password
-          </td>
-          <td>
-            <input type="password" name="password" value="">
-          </td>
-          <td class="error">
-	    {{login_error}}
-            
-          </td>
-        </tr>
-
-      </table>
-
-      <input type="submit">
+        <input type="submit" value="submit" />
     </form>
-  </body>
-
-</html>
+{% endblock %}

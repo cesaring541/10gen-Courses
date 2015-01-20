@@ -2,17 +2,29 @@
 
 <html>
 <head>
+
+  {% load staticfiles %}
   <title>{% block title %} {% endblock %}</title>
-  {% block stylesheet %}{% endblock %}
-  {% block javascript %}{% endblock %}
+  {% block stylesheet %}
+    <link href="{% static 'bower_components/bootstrap/dist/css/bootstrap.css' %}" rel="stylesheet">
+
+  {% endblock %}
+  {% block javascript %}
+      <script src="{% static 'bower_components/polymer/polymer.js' %}"></script>
+      <script src="{% static 'bower_components/webcomponentsjs/webcomponents.js' %}"></script>
+
+  {% endblock %}
 
 </head>
 
-<body>{%block nav %}{% endblock %}
+<body>
+  {%block nav %}
+  {% endblock %}
   {% block content %}
-  Welcome {{username}}
 
-  {% if user.authenticate %}
+  Welcome {{ request.path }}
+
+  {% if request.user.is_authenticated %}
   <p>
     <ul>
       <li><a href="/">Goto Blog Home</a></li>
@@ -28,7 +40,7 @@
   <p>
     <ul>
       <li>
-        <a href="/signin">SignIn</a>
+        <a href="/signup">SignUp</a>
       </li>
       <li>
         <a href="/login">Login</a>

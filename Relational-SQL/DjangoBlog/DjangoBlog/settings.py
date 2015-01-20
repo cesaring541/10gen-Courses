@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,6 +47,22 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+   "django.contrib.auth.context_processors.auth",
+   "django.core.context_processors.debug",
+   "django.core.context_processors.i18n",
+   "django.core.context_processors.media",
+   "django.core.context_processors.static",
+   "django.core.context_processors.tz",
+   'django.core.context_processors.request',
+
+   )
+
+PASSWORD_HASHERS = (
+'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
 )
 
 ROOT_URLCONF = 'DjangoBlog.urls'
@@ -83,11 +99,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+
+MEDIA_URL = '/media/'
+
 STATIC_URL = '/static/'
 
+STATICFILES_PATH = os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS = (
-        os.path.join(BASE_DIR,'static'),
+        STATICFILES_PATH,
 )
+
+MEDIA_URL = os.path.join(STATICFILES_PATH,'media/')
+
+
+TEMPLATE_PATH = os.path.join(BASE_DIR,'template')
 TEMPLATE_DIRS = (
-        os.path.join(BASE_DIR,'template'),
+        TEMPLATE_PATH,
 )
