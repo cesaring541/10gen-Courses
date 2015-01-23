@@ -2,27 +2,16 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+from django.conf import settings
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='Author',
-            fields=[
-                ('author_id', models.AutoField(serialize=False, primary_key=True)),
-                ('name', models.CharField(max_length=40)),
-                ('email', models.EmailField(unique=True, max_length=75)),
-                ('password', models.CharField(max_length=50)),
-            ],
-            options={
-                'db_table': 'authors',
-            },
-            bases=(models.Model,),
-        ),
         migrations.CreateModel(
             name='Comment',
             fields=[
@@ -43,7 +32,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=100)),
                 ('body', models.TextField()),
                 ('publication_date', models.DateField()),
-                ('author_id', models.ForeignKey(to='Blog.Author', db_column=b'author_id')),
+                ('author_id', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
                 ('comment_id', models.ManyToManyField(to='Blog.Comment', db_table=b'post_comments')),
             ],
             options={

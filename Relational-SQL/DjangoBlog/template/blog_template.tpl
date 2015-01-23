@@ -6,7 +6,7 @@
 <body>
 
 %if (username != None):
-Welcome {{username}}        <a href="/logout">Logout</a> | <a href="/newpost">New Post</a><p>
+Welcome {{request.user}}        <a href="/logout">Logout</a> | <a href="/newpost">New Post</a><p>
 %end
 
 <h1>My Blog</h1>

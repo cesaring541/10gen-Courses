@@ -6,17 +6,17 @@ from django.contrib.auth.models import User
 
 
 
-class Author(models.Model):
-	author_id = models.AutoField(primary_key=True,blank=False,null=False)
-	name = models.CharField(max_length=40)
-	email = models.EmailField(blank=False,unique=True)
-	password = models.CharField(max_length=50)
+# class Author(models.Model):
+# 	author_id = models.AutoField(primary_key=True,blank=False,null=False)
+# 	name = models.CharField(max_length=40)
+# 	email = models.EmailField(blank=False,unique=True)
+# 	password = models.CharField(max_length=50)
 
-	def __unicode__(self):
-		return self.email + self.id
+# 	def __unicode__(self):
+# 		return self.email + self.id
 
-	class Meta:
-		db_table = "authors"
+# 	class Meta:
+# 		db_table = "authors"
 
 
 
@@ -46,9 +46,10 @@ class Tag(models.Model):
 
 class Post(models.Model):
 	post_id = models.AutoField(primary_key=True,blank=False,null=False)
-	author_id = models.ForeignKey(Author,db_column='author_id')
+	author_id = models.ForeignKey(User)
 	title = models.CharField(max_length=100)
 	body = models.TextField()
+	permalink = models.CharField(default="Not Found",max_length=200)
 	publication_date = models.DateField()
 	tag_id = models.ManyToManyField(Tag,db_table="post_tags")
 	comment_id = models.ManyToManyField(Comment,db_table="post_comments")

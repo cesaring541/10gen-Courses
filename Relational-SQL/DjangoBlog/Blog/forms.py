@@ -6,10 +6,7 @@ from django.core import validators
 
 
 
-class LoginForm(ModelForm):
-	class Meta:
-		model = User
-		fields = ('email','password')
+
 class UserForm(ModelForm):
 	password = forms.CharField(widget=forms.PasswordInput(),required=True)
 	password_confirmation = forms.CharField(widget=forms.PasswordInput(),required=True)
@@ -27,23 +24,29 @@ class UserForm(ModelForm):
 
 		return self.cleaned_data
 
-class AuthorForm(ModelForm):
-	class Meta:
-		model = Author
-		fields = ('author_id','name','email','password')
+# class AuthorForm(ModelForm):
+# 	class Meta:
+# 		model = Author
+# 		fields = ('author_id','name','email','password')
 
 
 
 class CommentForm(ModelForm):
+
+
 	class Meta:
 		model = Comment
 		fields = ('comment_id','name','email','comment_text')
 
 
 class PostForm(ModelForm):
+	post_id = forms.IntegerField()
+	title = forms.CharField(required=True)
+	body = forms.CharField(widget=forms.Textarea(),required=True)
+	tag_id = forms.CharField(required=True)
 	class Meta:
 		model = Post
-		fields = ('post_id','title','body','publication_date')
+		fields = ('post_id','title','body','tag_id')
 
 
 class TagForm(ModelForm):

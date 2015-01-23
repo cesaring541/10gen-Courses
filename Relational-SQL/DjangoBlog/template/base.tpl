@@ -9,6 +9,7 @@
     <link href="{% static 'bower_components/bootstrap/dist/css/bootstrap.css' %}" rel="stylesheet">
 
   {% endblock %}
+
   {% block javascript %}
       <script src="{% static 'bower_components/polymer/polymer.js' %}"></script>
       <script src="{% static 'bower_components/webcomponentsjs/webcomponents.js' %}"></script>
@@ -18,10 +19,12 @@
 </head>
 
 <body>
+
   {%block nav %}
   {% endblock %}
-  {% block content %}
+  <div class="container">
 
+  {% block content %}
   Welcome {{ request.path }}
 
   {% if request.user.is_authenticated %}
@@ -49,7 +52,7 @@
   </p>
   {% endif %}
   {%endblock %}
-
+  </div>
   {% block footer %}{% endblock %}
 </body>
 
