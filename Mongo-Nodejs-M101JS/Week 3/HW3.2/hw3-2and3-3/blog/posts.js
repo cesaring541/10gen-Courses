@@ -91,7 +91,16 @@ function PostsDAO(db) {
         }
 
         // hw3.3 TODO
-        callback(Error("addComment NYI"), null);
+        var _query = {'permalink':permalink}
+        var _add_comment = {'$push':{'comments':comment}}
+        posts.update(_query,_add_comment,function(err,doc){
+            if(err){
+                callback(Error("addComment NYI"), null);
+            }
+            console.log('add comment success' + doc);
+            callback(null,doc);
+
+        })
     }
 }
 
