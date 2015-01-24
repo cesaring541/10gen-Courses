@@ -33,10 +33,12 @@ class UserForm(ModelForm):
 
 class CommentForm(ModelForm):
 
-
+	name = forms.CharField(required=True)
+	email = forms.EmailField(required=True)
+	comment_text = forms.CharField(widget=forms.Textarea(),required=True)
 	class Meta:
 		model = Comment
-		fields = ('comment_id','name','email','comment_text')
+		fields = ('name','email','comment_text')
 
 
 class PostForm(ModelForm):

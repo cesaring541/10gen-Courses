@@ -55,7 +55,6 @@ class Post(models.Model):
 	comment_id = models.ManyToManyField(Comment,db_table="post_comments")
 	def __unicode__(self):
 		return "%s" % self.title
-
 	class Meta:
 		db_table = "posts"
 

@@ -14,6 +14,9 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^',include("Blog.urls")),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^404error/',error404,name='404'),
+    url(r'^500error/',error500,name='500'),
+
 )
 
 

@@ -34,7 +34,7 @@ Welcome {{request.user}}
 		<br>
 		<input type="submit" class='btn btn-default' value="Submit">
 
-	</div>
+	</div></form>
 	{% endif %}
 	{% endblock %}
 

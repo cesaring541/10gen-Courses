@@ -101,13 +101,40 @@ class PostView(DetailView):
 		if form.is_valid():
 			post = form.save(commit=False)
 			post.author_id = request.user
-			post.permalink = post.title + str(datetime.datetime.now())
+			post.permalink = post.title
 			post.publication_date = datetime.datetime.now()
 
 			if 'tag_id' in request.POST['tag_id']:
-				post.tag_id = Tag.objects.filter(Q(name__in=request.POST['tag_id'].split()))
+				post.tag_id = Tag.objects.filter(
+					Q(name__in=map(lambda x : x.lower(),request.POST['tag_id'].split())))
 			post.save()
 			return HttpResponseRedirect(reverse('index'))
 		context_dict['form'] = form
 
 		return render(request,'newpost_template.tpl',context_dict)
+
+
+class CommentView(DetailView):
+
+	def get(self,request,permalink):
+		context_dict = {}
+		try:
+			post = Post.objects.get(permalink=permalink)
+			form = CommentForm()
+			context_dict['post'] = post
+			context_dict['form'] = form
+
+			return render(request,'entry_template.tpl',context_dict)
+		except Post.DoesNotExist:
+			return HttpResponseRedirect(reverse('404'))
+
+	def post(self,request,permalink):
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			comment = form.save()
+			post = Post.objects.get(permalink=permalink)
+			post.comment_id.add(comment)
+			post.save()
+		return self.get(request,permalink)
+
+
