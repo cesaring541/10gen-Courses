@@ -13,6 +13,7 @@ Welcome {{request.user}}        <a href="/logout">Logout</a> | <a href="/newpost
 
 
 This is a placeholder for the blog
+{{tag}}
 
 </body>
 </html>

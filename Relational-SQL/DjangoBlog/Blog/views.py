@@ -1,3 +1,5 @@
+# -*-coding:utf-8 -*
+
 from django.shortcuts import render,render_to_response,redirect
 from django.views.generic import ListView,DetailView
 from django.contrib.auth import authenticate, login,logout
@@ -5,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.db.models import Q
 from .forms import *
 from .models import *
 import datetime
@@ -94,13 +97,17 @@ class PostView(DetailView):
 		context_dict = {}
 
 		form = PostForm(request.POST)
-		import ipdb; ipdb.set_trace()
-
+		# import ipdb; ipdb.set_trace()
 		if form.is_valid():
 			post = form.save(commit=False)
-			post.author_id = request.user.id
+			post.author_id = request.user
+			post.permalink = post.title + str(datetime.datetime.now())
 			post.publication_date = datetime.datetime.now()
 
+			if 'tag_id' in request.POST['tag_id']:
+				post.tag_id = Tag.objects.filter(Q(name__in=request.POST['tag_id'].split()))
+			post.save()
+			return HttpResponseRedirect(reverse('index'))
 		context_dict['form'] = form
 
 		return render(request,'newpost_template.tpl',context_dict)

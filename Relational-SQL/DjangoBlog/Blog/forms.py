@@ -40,13 +40,12 @@ class CommentForm(ModelForm):
 
 
 class PostForm(ModelForm):
-	post_id = forms.IntegerField()
 	title = forms.CharField(required=True)
 	body = forms.CharField(widget=forms.Textarea(),required=True)
 	tag_id = forms.CharField(required=True)
 	class Meta:
 		model = Post
-		fields = ('post_id','title','body','tag_id')
+		fields = ('title','body','tag_id')
 
 
 class TagForm(ModelForm):

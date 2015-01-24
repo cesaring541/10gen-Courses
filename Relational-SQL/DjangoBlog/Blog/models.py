@@ -28,7 +28,7 @@ class Comment(models.Model):
 	comment_text = models.TextField()
 
 	def __unicode__(self):
-		return self.email + self.comment_id
+		return "%s %s" % (self.email,self.comment_id)
 
 	class Meta:
 		db_table = "comments"
@@ -39,7 +39,7 @@ class Tag(models.Model):
 	name = models.CharField(max_length=100)
 
 	def __unicode__(self):
-		return self.name + self.tag_id
+		return "%s %s" % (self.name,self.tag_id)
 
 	class Meta:
 		db_table = "tags"
@@ -50,11 +50,11 @@ class Post(models.Model):
 	title = models.CharField(max_length=100)
 	body = models.TextField()
 	permalink = models.CharField(default="Not Found",max_length=200)
-	publication_date = models.DateField()
+	publication_date = models.DateTimeField()
 	tag_id = models.ManyToManyField(Tag,db_table="post_tags")
 	comment_id = models.ManyToManyField(Comment,db_table="post_comments")
 	def __unicode__(self):
-		return self.title + self.post_id
+		return "%s" % self.title
 
 	class Meta:
 		db_table = "posts"
