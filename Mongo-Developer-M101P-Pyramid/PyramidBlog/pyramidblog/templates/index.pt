@@ -1,0 +1,11 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:tal="http://xml.zope.org/namespaces/tal"
+       xmlns:metal="http://xml.zope.org/namespaces/metal">
+  <head>
+  </head>
+  <body>
+    <span metal:use-macro="main.macros['hello']">
+      <span metal:fill-slot="name">Chris</span>
+    </span>
+  </body>
+</html>

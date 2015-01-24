@@ -12,11 +12,11 @@ item = students.aggregate([
 	{'$match':{'scores.type':'homework'}},
 	{"$group": {"_id": "$_id", "min": {"$min": '$scores.score'}}}
 	])
-# if item:
-# 	for data in item['result']:
-# 		query = {'_id':data['_id']}
-# 		unset = {'$pull':{'scores':{'type':'homework','score':data['min']}}}
-# 		students.update(query,unset)
+if item:
+	for data in item['result']:
+		query = {'_id':data['_id']}
+		unset = {'$pull':{'scores':{'type':'homework','score':data['min']}}}
+		students.update(query,unset)
 print "completed remove data"
 item = students.aggregate([
 	{ '$unwind' : '$scores' },

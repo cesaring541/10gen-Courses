@@ -1,3 +1,29 @@
 You are now using a spinning disk, rather than an SSD.
 
 You begin frequently accessing your data from capped collections, in the order in which it was written.
+
+
+==============================================
+
+
+
+    Answer
+
+    Keep in mind that increasing readahead just means that you want to read more data from the disk than you're asking for when you perform a read. It's useful if you've got good reason to think that you're probably going to read the next few sectors on disk when you do a read.
+
+    The correct answers are:
+        You begin frequently accessing your data from capped collections, in the order in which it was written.
+        You are now using a spinning disk, rather than an SSD.
+
+    The first is correct because a capped collection is going to consist of a fairly localized region on your disk. If you read through it, then increasing readahead will mean fewer page faults and fewer seeks.
+
+    The second serves to increase the importance of readahead, as page faults on a spinning disk are more costly than they are on an SSD.
+
+    The two incorrect answers are:
+        You are now writing frequently, so that write locks become a constraint while reads have to wait.
+        Your working set outgrows the available memory, so you are having to go to storage much more often.
+
+    The first is wrong because readahead doesn't help when you're dominated by writes.
+
+    The second is wrong because now you're at least as likely to push something out of ram as you are to pull something useful in. You can't say whether your page faults will increase or decrease when you increase readahead.
+

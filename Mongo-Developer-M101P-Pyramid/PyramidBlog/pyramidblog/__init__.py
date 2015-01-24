@@ -1,11 +1,11 @@
 from pyramid.config import Configurator
 import mongoengine
 from mongoengine import connect
-from configs import MONGO
+from . import configs
 
 def factory_db():
-	if not configs.CONN:
-    	configs.CONN = connect(MONGO['DB'])
+    if not configs.CONN:
+        configs.CONN = connect(configs.MONGO['DB'])
     return configs.CONN
 
 def main(global_config, **settings):
@@ -13,9 +13,8 @@ def main(global_config, **settings):
     """
     config = Configurator(settings=settings)
     config.include('pyramid_chameleon')
-    config.include('pyramid_chameleon')
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
     config.scan()
-    factory_db()
+    f = factory_db()
     return config.make_wsgi_app()

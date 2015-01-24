@@ -1,0 +1,20 @@
+
+Lecture Notes
+
+First download and install Vagrant and VirtualBox.
+
+Then download this lesson's handout and extract it. It contains a directory which contains a README and a Vagrantfile in it.
+
+Open a shell and cd to the extracted directory. Run vagrant up. Vagrant always looks for a Vagrantfile in your current directory to determine which VM image and configuration to use. It will take a while for Vagrant to download the image, but Vagrant caches VM images locally, so you will only need to wait for this download once.
+
+Once the download finishes the VM will boot up and display a standard Ubuntu desktop that has MongoDB, MongoProc, and other tools used in this course pre-installed.
+
+Also, the following has changed since the video was filmed:
+
+    The directory name is now M202Vagrant.
+    The default box is now named 'm202-ubuntu1404'.
+    The size of the box is roughly 1.0 GB.
+    The version of ubuntu used is now 14.04.
+    The username/password is now 'm202 User'/'m202' (no quotes)
+    The version of mongodb being used is now 2.6.4.
+
