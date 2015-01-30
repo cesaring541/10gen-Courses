@@ -1,0 +1,6 @@
+This query performs a collection scan. -> True #Because nscannedObjects > 1
+The query uses an index to determine the order in which to return result documents. -> True #because the cursor return a btree with reverse
+The query uses an index to determine which documents match. -> False #Because at the indexBounds field use create_at sort
+The query returns 46462 documents. -> False #Because n = 10 instead n = 46462
+The query visits 46462 documents. -> True #Because nscanned = 46462
+The query is a "covered index query". -> False #Because indexOnly : false
