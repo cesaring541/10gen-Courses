@@ -1,0 +1,5 @@
+All 3 servers in data center 1. -> False
+
+2 servers in data center 1, one server in data center 2. -> False
+
+None of the above. -> True
