@@ -1,0 +1,17 @@
+<div><h2 class="problem-header">
+  Homework: Homework 5.1 (Hands On)
+</h2>
+
+<section class="problem"><div><b>Finding the most frequent author of comments on your blog</b><br>
+In this assignment you will use the aggregation framework to find the most frequent author of comments on your blog. We will be using the same basic dataset as last week, with posts and comments shortened considerably, and with many fewer documents in the collection in order to streamline the operations of the <em>Hands On</em> web shell.
+<br><br>
+Use the aggregation framework in the web shell to calculate the author with the greatest number of comments.
+<br><br>
+To help you verify your work before submitting, the author with the fewest comments is Cody Strouth and he commented 68 times.
+<br><br>
+Once you've found the correct answer with your query, please choose your answer below for the most prolific comment author.
+<br><br>
+Note: this data set is relatively large. Due to some quirks of the shell, the entire result set gets pulled into the browser on find(), so if you want to see the document schema, we recommend either using db.posts.findOne(), db.posts.find().limit(1), or that you plan on waiting for a bit after you hit enter. We also recommend that the last phase of your aggregation pipeline is {$limit: 1} (or some single digit number)
+<br><br><span><form id="inputtype_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1" class="choicegroup capa_inputtype" __biza="WJ__"><div class="indicator_container"><span id="status_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1" style="display:inline-block;" class="unanswered"></span></div><fieldset><label for="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_0"><input type="radio" value="choice_0" id="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_0" name="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1"> Kayce Kenyon </label><label for="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_1"><input type="radio" value="choice_1" id="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_1" name="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1"> Devorah Smartt </label><label for="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_2"><input type="radio" value="choice_2" id="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_2" name="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1"> Gisela Levin </label><label for="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_3"><input type="radio" value="choice_3" id="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_3" name="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1"> Brittny Warwick </label><label for="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_4"><input type="radio" value="choice_4" id="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_4" name="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1"> Tamika Schildgen </label><label for="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_5"><input type="radio" value="choice_5" id="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1_choice_5" name="input_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1"> Mariette Batdorf </label><span id="answer_i4x-10gen-M101JS-problem-52cf2c47e2d423570a05b932_2_1"></span></fieldset></form></span></div>
+
+  </section></div>
