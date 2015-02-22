@@ -3,9 +3,10 @@ import datetime
 
 
 class User(Document):
-	username = StringField(max_length=200,required=True)
+	_id = StringField(primary_key=True)
 	password = StringField(max_length=200,required=True)
-
+	email = EmailField()
+	meta = {'collection': 'users'}
 
 class Post(Document):
 	title = StringField(max_length=200,required=True)
@@ -15,6 +16,8 @@ class Post(Document):
 	tags = ListField()
 	comments = ListField()
 	date = DateTimeField()
+	meta = {'collection': 'posts'}
 
 class Session(Document):
 	username = ReferenceField(User)
+	meta = {'collection': 'sessions'}

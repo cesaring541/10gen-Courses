@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:tal="http://xml.zope.org/namespaces/tal"
+xmlns:metal="http://xml.zope.org/namespaces/metal">
+<head>
+</head>
+<body>
+
+
+	<span metal:define-macro="login">
+		<span metal:define-slot="form_login">
+			${structure:form}
+		</span>!
+	</span>
+
+
+	<form method="POST">
+	<div class="row"
+     tal:repeat="field form">
+    <div class="span2">
+        ${field.title}
+        <span class="req" tal:condition="field.required">*</span>
+    </div>
+    <div class="span2">
+        ${structure:field.serialize()}
+    </div>
+    <ul tal:condition="field.error">
+        <li tal:repeat="error field.error.messages()">
+            ${structure:error}
+        </li>
+    </ul>
+	</div>
+	<input type="submit" name="sssss" value="ssss">
+    </form>
+</body>
+</html>
